@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Feedback Section</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Gill Sans;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        .text-shadow {
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .highlight-text {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #000;
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+    </style>
+    </head>
+     <body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">Portfolio</a>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="page2.html">Quarter 1</a></li>
+            <li class="nav-item"><a class="nav-link" href="https://sylustan.github.io/FV_ICT9Emerald_Q2PROJ_Tan_Audrey/">Quarter 2</a></li>
+            <li class="nav-item"><a class="nav-link" href="https://sylustan.github.io/Campus_ICT9Emerald_Q3Project_Tan_Audrey/">Quarter 3</a></li>
+            <li class="nav-item"><a class="nav-link" href="https://sylustan.github.io/FV_ICT9Emerald_Q4Quiz2_Tan_Audrey/">Quarter 4</a></li>
+            <li class="nav-item"><a class="nav-link" href="whatsnext.html">What's Next</a></li>
+            <li class="nav-item"><a class="nav-link" href="feedback.html">Feedback Form</a></li>
+        </ul>
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search">
+            <button class="btn btn-outline-light" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
+<!-- Content -->
+<div class="container mt-5 text-center">
+    <div class="highlight-text mx-auto mb-4">
+        <h1 class="mb-2">FEEDBACK FORM</h1>
+        <p>We appreciate your honesty in answering the feedback form. We accept your feedback :)</p>
+    </div>
+
+    <div class="row justify-content-center mt-4">
+        <div class="feedback col-md-6">
+            <form id="feedbackForm" class="mb-3">
+                <label for="name" class="form-label">Student Name:</label>
+                <input type="text" id="name" class="form-control" required>
+
+                <label for="score1" class="form-label mt-2">Design / Visual Appeal (1-100):</label>
+                <input type="number" id="score1" class="form-control" required>
+
+                <label for="score2" class="form-label mt-2">Content Quality (1-100):</label>
+                <input type="number" id="score2" class="form-control" required>
+
+                <label for="score3" class="form-label mt-2">First Impression (1-100):</label>
+                <input type="number" id="score3" class="form-control" required>
+
+                <button type="button" class="btn btn-secondary mt-3 text-shadow" onclick="calculateFeedback()">Submit Now</button>
+            </form>
+
+            <div id="result" class="mt-4 alert alert-info" style="display: none;"></div>
+        </div>
+    </div>
+</div>
+
+
+<!-- JavaScript -->
+<script>
+    function calculateFeedback() {
+        let name = document.getElementById('name').value;
+        let s1 = parseFloat(document.getElementById('score1').value);
+        let s2 = parseFloat(document.getElementById('score2').value);
+        let s3 = parseFloat(document.getElementById('score3').value);
+
+        if (isNaN(s1) || isNaN(s2) || isNaN(s3) || name.trim() === "") {
+            alert("Please enter valid inputs.");
+            return;
+        }
+
+        let average = Math.round((s1 + s2 + s3) / 3);
+        let message = "";
+
+        if (average >= 90) {
+            message = "Excellent work!";
+        } else if (average >= 75) {
+            message = "Good job!";
+        } else {
+            message = "Needs improvement.";
+        }
+
+        document.getElementById("result").style.display = "block";
+        document.getElementById("result").innerHTML =
+            "<strong>" + name + "</strong>, your average rating is <strong>" + average + "</strong>. " + message;
+    }
+</script>
+
+<!-- Footer -->
+<footer class="bg-primary text-light text-center py-3 mt-5">
+    <p>O.B. Montessori Center Fairview | Audrey Alexia H. Tan</p>
+</footer>
+
+</body>
+</html>
+
